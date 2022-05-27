@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="box">
+        <a href="#" class="btn">Button</a>
+        <a href="#" class="btn">Button</a>
+    </div>
+    <script>
+        var btns=document.querySelectorAll('.btn');
+        btns.forEach(btn=>{
+            btn.addEventListener('click',function(e){
+                let x = e.clientX - e.target.offsetLeft;
+                let y = e.clientY - e.target.offsetTop;
+
+                var ripple = document.createElement('div');
+                ripple.classList.add('ripple');
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                this.appendChild(ripple);
+
+                setTimeout(()=>{
+                    ripple.remove();
+                },1000);
+            })
+        })
+    </script>
+</body>
+</html>
